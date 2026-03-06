@@ -1,0 +1,18 @@
+---
+description: Workflow – zuerst Rules/CI beachten; Commit/Push nicht verpflichtend
+alwaysApply: true
+---
+
+# Projekt-Workflow
+
+## Vor Änderungen
+
+Bei **jeden** Änderungen (Layout, responsive, Inhalte, neue Seiten):
+
+1. **Zuerst Rules prüfen:** Die BERENT Rules in `.cursor/rules` (Corporate Identity, responsive Pflicht) gelten für dieses Projekt. Vor Umsetzung prüfen, ob die Änderung mit den Rules vereinbar ist.
+2. **CI/Standards:** Farben, Typo, Viewport, Mobile-First und „kein horizontales Scrollen“ aus `berent-ci.mdc` einhalten.
+
+## Commit und Push
+
+- **Commit und Push sind nicht verpflichtend.** Änderungen müssen nicht sofort committed oder gepusht werden.
+- Ob und wann committed/gepusht wird, entscheidest du; die Rules und das CI legen das nicht fest.
