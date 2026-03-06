@@ -115,6 +115,31 @@ Das `+` ist das zentrale Markenelement von BERENT.AI.
 
 ---
 
+## Responsive / Mobile (Pflicht)
+
+**Regel:** Alle BERENT-Seiten müssen auf Smartphones (ab 320px Breite, iPhone 16: 393px) korrekt dargestellt werden.
+
+**Viewport (immer im `<head>`):**
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+**Layout-Regeln:**
+- **Mobile-First:** Basis-Styles für kleine Screens, dann `min-width` Media Queries für größere
+- **Kein horizontales Scrollen** – `overflow-x: hidden` auf `body` oder `html` nur als letzte Option; besser: `max-width: 100%` auf Containern, `box-sizing: border-box` überall
+- **Flexbox/Grid:** `flex-wrap: wrap` oder `grid-template-columns: repeat(auto-fit, minmax(...))` – Elemente stapeln sich auf schmalen Screens
+- **Bilder:** `max-width: 100%`, `height: auto`
+- **Touch-Targets:** Mindestens 44×44px für klickbare Elemente
+
+**Breakpoints (Orientierung):**
+- Mobile: &lt; 640px
+- Tablet: 640px–1024px
+- Desktop: &gt; 1024px
+
+**Test:** Immer auf iPhone 16 (393×852) oder vergleichbarem Gerät prüfen – keine seitlich nebeneinander stehenden Elemente, die über den Rand ragen.
+
+---
+
 ## Design-Prinzipien
 
 1. **Wärme statt Kälte** – Warme Braun-Schwarz-Töne, keine kalten Grautöne
