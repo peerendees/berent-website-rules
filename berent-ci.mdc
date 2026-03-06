@@ -1,0 +1,22 @@
+---
+description: BERENT Corporate Identity – Farben, Typografie, Layout
+alwaysApply: true
+---
+
+# BERENT CI
+
+## Farben
+
+- **Primary:** #80331A
+- **Primary Hover:** #A0522D
+- **Accent:** #D6B366
+
+## Typografie
+
+- Semantisches HTML
+- Mobile-First Design
+
+## Layout
+
+- Tailwind CSS für Styling
+- Accessibility-Best-Practices
