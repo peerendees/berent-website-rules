@@ -197,3 +197,4 @@ Bei allen BERENT.AI-Inhalten oder -Code gilt:
 - Nav-Brand ist **immer** ein klickbarer Link auf `https://berent.ai`
 - Kein `font-style: italic` bei Lora
 - Kein reines Schwarz, kein Weiß, kein generic AI-Look
+- **Responsive Pflicht:** Mobile-First, Viewport-Meta, kein horizontales Scrollen, Test auf iPhone-Breite
