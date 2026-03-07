@@ -16,14 +16,15 @@ alwaysApply: true
 
 | Rolle | Hex | Beschreibung |
 |---|---|---|
-| Hintergrund | `#090806` | Warmes Dunkelbraun-Schwarz – KEIN reines Schwarz |
+| Hintergrund | `#0e0e10` | Neutrales Anthrazit (Tageslicht) – KEIN reines Schwarz |
 | Primär / Kupfer | `#B5742A` | Hauptakzent, Headlines, Buttons, Borders |
 | Gold / Champagne | `#E8C98A` | Exklusiv für das `+` Symbol und sparsame Highlights |
 | Text | `#C4BCB1` | Warmes Graubeige – Fließtext und Body |
 | Sekundärtext | `#7A6A58` | Muted / Labels / Metainfo |
 | Sekundärtext 2 | `#9A8870` | Noch sichtbar, aber dezent |
-| Card-Hintergrund | `#110E0A` | Leicht aufgehellt vom Seitenhintergrund |
-| Border | `#2A2118` | Subtile Trennlinien und Rahmen |
+| Card-Hintergrund | `#151518` | Leicht aufgehellt vom Seitenhintergrund |
+| Border | `#2a2a2e` | Subtile Trennlinien und Rahmen |
+| Border 2 | `#3a3a40` | Akzent-Borders, Hover |
 
 **Regel:** Niemals reines Schwarz (`#000000`) oder reines Weiß (`#FFFFFF`) verwenden.  
 **Regel:** Das Gold `#E8C98A` ist dem `+` Symbol vorbehalten – sparsam einsetzen.
@@ -53,9 +54,9 @@ alwaysApply: true
 
 ```css
 :root {
-  --bg:      #090806;
-  --card:    #110e0a;
-  --border:  #2a2118;
+  --bg:      #0e0e10;
+  --card:    #151518;
+  --border:  #2a2a2e;
   --copper:  #B5742A;
   --gold:    #E8C98A;
   --text:    #C4BCB1;
