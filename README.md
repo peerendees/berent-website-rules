@@ -1,68 +1,88 @@
-# BERENT Website Rules
+# BERENT.AI – CI und Rules
 
-Zentrale Cursor Rules für alle BERENT-Webseiten (berent.ai, Subdomains, etc.).
+Zentrale Single Source of Truth für die BERENT.AI Corporate Identity.
+Gilt für alle Tools: **Cursor**, **Claude Code** und **Claude Desktop**.
 
 ---
 
-## Bestehendes Projekt anbinden
+## Setup (einmal pro Rechner)
 
-Rules in ein **bereits existierendes** Repo einbinden (z.B. shop, launch, Vercel-Projekte):
+```bash
+git clone https://github.com/peerendees/berent-website-rules.git ~/berent-rules
+cd ~/berent-rules && chmod +x berent.sh && ./berent.sh
+```
+
+Das Script:
+1. Symlinkt die **Claude Code Skills** (`berent-ci`, `berent-docx`) ins Skills-Verzeichnis
+2. Ergänzt die **globale `~/.claude/CLAUDE.md`** mit BERENT-CI-Referenz
+3. Gibt Anleitung für **Cursor Submodule** aus
+
+---
+
+## Update (auf jedem Rechner)
+
+```bash
+cd ~/berent-rules && git pull
+```
+
+Symlinks greifen sofort — kein erneutes Setup nötig.
+
+---
+
+## Cursor: Projekt anbinden
+
+Rules in ein bestehendes Repo einbinden:
 
 ```bash
 cd /pfad/zum/projekt
 git submodule add https://github.com/peerendees/berent-website-rules.git .cursor/rules
 git add .gitmodules .cursor/rules
-git commit -m "Rules als Submodule einbinden"
-git push origin main
+git commit -m "BERENT Rules als Submodule einbinden"
 ```
 
-**Vercel:** In den Projekteinstellungen **„Include Git submodules“** aktivieren.
+**Vercel:** In den Projekteinstellungen **„Include Git submodules"** aktivieren.
 
-**Oder per Setup-Script:**
-
-```bash
-cd /pfad/zum/projekt
-curl -sSL https://raw.githubusercontent.com/peerendees/berent-website-rules/main/setup.sh | bash
-# Danach: git add . && git commit -m "Rules einbinden" && git push
-```
-
----
-
-## Rules aktualisieren
-
-In einem Projekt die Rules auf den neuesten Stand bringen:
-
-```bash
-git submodule update --remote .cursor/rules
-git add .cursor/rules
-git commit -m "Rules aktualisiert"
-git push origin main
-```
-
----
-
-## Projekt mit Submodule klonen
-
-Beim Klonen **immer** Submodules mitziehen:
+Beim Klonen eines Projekts mit Submodule:
 
 ```bash
 git clone --recurse-submodules <repo-url>
+# Oder nachträglich:
+git submodule update --init
 ```
 
-Falls ohne Submodules geklont wurde:
+Rules aktualisieren:
 
 ```bash
-git submodule update --init
+git submodule update --remote .cursor/rules
+git add .cursor/rules && git commit -m "Rules aktualisiert"
 ```
 
 ---
 
-## Neues Projekt starten (Template)
+## Inhalt
 
-Für neue Subdomains/Projekte von Grund auf:
+```
+berent-ci.mdc              # Cursor Rule – Vollständige CI (Dark und Light Mode)
+project-workflow.mdc        # Cursor Rule – Workflow-Regeln
+skills/
+  berent-ci/SKILL.md        # Claude Code Skill – CI (Superset: Web, DOCX, Gamma)
+  berent-docx/SKILL.md      # Claude Code Skill – Word-Dokumente im CI
+berent.sh                   # Setup-Script (Symlinks und globale CLAUDE.md)
+README.md                   # Diese Datei
+```
 
-1. GitHub → [berent-website-template](https://github.com/peerendees/berent-website-template) → **Use this template**
-2. Neues Repo anlegen
-3. Klonen: `git clone --recurse-submodules <url>`
-4. `npm install` und `npm run build`
-5. Mit Vercel verbinden (Submodules aktivieren)
+---
+
+## Was wo gilt
+
+| Datei | Tool | Scope |
+|-------|------|-------|
+| `berent-ci.mdc` | Cursor | Web-Projekte (via Submodule) |
+| `project-workflow.mdc` | Cursor | Workflow-Regeln |
+| `skills/berent-ci/SKILL.md` | Claude Code und Desktop | Alle Medien (Web, DOCX, Präsentationen) |
+| `skills/berent-docx/SKILL.md` | Claude Code und Desktop | Word-Dokumente |
+| `~/.claude/CLAUDE.md` | Claude Code | Globale Referenz auf Skills |
+
+---
+
+*BERENT.AI · Beratung + Entwicklung · berent.ai*

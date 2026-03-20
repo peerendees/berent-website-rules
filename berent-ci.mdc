@@ -1,33 +1,59 @@
 ---
-description: BERENT Corporate Identity – Farben, Typografie, Design-Prinzipien
+description: BERENT Corporate Identity – Farben, Typografie, Design-Prinzipien, Light/Dark Theme
 alwaysApply: true
 ---
 
 # BERENT Corporate Identity
 
-**Marke:** BERENT.AI – Beratung + Entwicklung  
-**Domain:** berent.ai  
-**Claim:** Beratung + Entwicklung  
+**Marke:** BERENT.AI – Beratung + Entwicklung
+**Domain:** berent.ai
+**Claim:** Beratung + Entwicklung
 **Markensymbol:** Das `+` Kreuz-Symbol – steht für die Verbindung von Beratung und Entwicklung
 
 ---
 
-## Farbpalette
+## Farbpalette (Dark Mode – Standard)
 
-| Rolle | Hex | Beschreibung |
-|---|---|---|
-| Hintergrund | `#0e0e10` | Neutrales Anthrazit (Tageslicht) – KEIN reines Schwarz |
-| Primär / Kupfer | `#B5742A` | Hauptakzent, Headlines, Buttons, Borders |
-| Gold / Champagne | `#E8C98A` | Exklusiv für das `+` Symbol und sparsame Highlights |
-| Text | `#C4BCB1` | Warmes Graubeige – Fließtext und Body |
-| Sekundärtext | `#7A6A58` | Muted / Labels / Metainfo |
-| Sekundärtext 2 | `#9A8870` | Noch sichtbar, aber dezent |
-| Card-Hintergrund | `#151518` | Leicht aufgehellt vom Seitenhintergrund |
-| Border | `#2a2a2e` | Subtile Trennlinien und Rahmen |
-| Border 2 | `#3a3a40` | Akzent-Borders, Hover |
+| Rolle | Hex | CSS-Variable | Beschreibung |
+|---|---|---|---|
+| Hintergrund | `#0e0e10` | `--bg` | Neutral-dunkel – KEIN reines Schwarz |
+| Hintergrund 2 | `#151518` | `--bg2` | Sections, Cards, Header |
+| Hintergrund 3 | `#1c1c20` | `--bg3` | Inputs, Hover-States |
+| Primär / Kupfer | `#B5742A` | `--copper` | Hauptakzent, Headlines, Buttons, Borders |
+| Kupfer hell | `#cc8c3e` | `--copper-lt` | Hover-States |
+| Kupfer dunkel | `#7a4e1c` | `--copper-dk` | Badges, Connector-Lines |
+| Gold / Champagne | `#E8C98A` | `--gold` | **Exklusiv** für das `+` Symbol |
+| Gold gedämpft | `#c4a870` | `--gold-dim` | Dezente Gold-Akzente |
+| Text | `#C4BCB1` | `--text` | Warmes Graubeige – Fließtext |
+| Sekundärtext | `#7A6A58` | `--muted` | Labels / Metainfo |
+| Sekundärtext 2 | `#9A8870` | `--muted2` | Dezente Labels |
+| Border | `#2a2a2e` | `--border` | Subtile Trennlinien |
+| Border 2 | `#3a3a40` | `--border2` | Stärkere Trennlinien, Hover-Borders |
 
-**Regel:** Niemals reines Schwarz (`#000000`) oder reines Weiß (`#FFFFFF`) verwenden.  
-**Regel:** Das Gold `#E8C98A` ist dem `+` Symbol vorbehalten – sparsam einsetzen.
+## Farbpalette (Light Mode)
+
+| Rolle | Hex | CSS-Variable | Beschreibung |
+|---|---|---|---|
+| Hintergrund | `#F5F2EE` | `--bg` | Warmes Sand-Beige |
+| Hintergrund 2 | `#EDEAE4` | `--bg2` | Sections, Cards, Header |
+| Hintergrund 3 | `#E3DFD8` | `--bg3` | Inputs, Hover-States |
+| Primär / Kupfer | `#9A6320` | `--copper` | Dunklerer Kupfer für Kontrast auf hell |
+| Kupfer hell | `#B5742A` | `--copper-lt` | Hover-States |
+| Gold | `#9A6320` | `--gold` | Dunkleres Gold für Plus-Symbol |
+| Gold gedämpft | `#B08840` | `--gold-dim` | Dezente Gold-Akzente |
+| Text | `#2E2318` | `--text` | Dunkel-Kupfer – warm, CI-eigen |
+| Sekundärtext | `#7A6248` | `--muted` | Labels / Metainfo, warm-kupfer |
+| Border | `#D1CBBD` | `--border` | Subtile Trennlinien |
+| Border 2 | `#C2BAA9` | `--border2` | Stärkere Trennlinien |
+
+**Aktivierung:** `<html data-theme="light">` — Dark ist Standard (kein Attribut = Dark Mode)
+
+**Regeln:**
+- Niemals reines Schwarz (`#000000`) oder reines Weiß (`#FFFFFF`) verwenden
+- Gold `#E8C98A` ist dem `+` Symbol vorbehalten (im Dark Mode)
+- Light-Mode-Text `#2E2318` ist eine Kupfer-Dunkelvariation, kein neutrales Schwarz
+- Dark Mode ist der Standard — Light Mode via Toggle oder localStorage
+- Kein `&` als Konjunktion — immer „und"
 
 ---
 
@@ -37,39 +63,94 @@ alwaysApply: true
 |---|---|---|---|
 | Headlines / Display | **Bebas Neue** | Regular | UPPERCASE, kondensiert-geometrisch |
 | Body / Fließtext | **Lora** | 300 / 400 / 600 | Kein Kursiv |
-| Code / Labels / Mono | **JetBrains Mono** | 300 / 400 / 700 | Technische Inhalte |
+| Code / Labels / Mono | **JetBrains Mono** | 300 / 400 / 700 | Technische Inhalte, Buttons, Meta (uppercase, 0.65-0.78rem) |
 
 **Google Fonts Import:**
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:wght@300;400;600&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
 ```
 
-**Regel:** Niemals `font-style: italic` bei Lora verwenden.  
-**Regel:** Niemals generische Fonts wie Inter, Roboto, Arial, System-UI verwenden.  
-**Regel:** Bebas Neue immer in Großbuchstaben, mit `letter-spacing: 0.04em` bis `0.1em`.
+**Regeln:**
+- Niemals `font-style: italic` bei Lora
+- Niemals Inter, Roboto, Arial, System-UI
+- Bebas Neue: `letter-spacing: 0.04em` bis `0.1em`
+- JetBrains Mono für Labels, Buttons, Status-Anzeigen (uppercase, 0.65-0.78rem)
 
 ---
 
-## CSS Variablen (Standard-Setup)
+## CSS Standard-Setup
 
 ```css
 :root {
-  --bg:      #0e0e10;
-  --card:    #151518;
-  --border:  #2a2a2e;
-  --copper:  #B5742A;
-  --gold:    #E8C98A;
-  --text:    #C4BCB1;
-  --muted:   #7A6A58;
-  --muted2:  #9a8870;
+  --bg:        #0e0e10;
+  --bg2:       #151518;
+  --bg3:       #1c1c20;
+  --border:    #2a2a2e;
+  --border2:   #3a3a40;
+  --copper:    #B5742A;
+  --copper-lt: #cc8c3e;
+  --copper-dk: #7a4e1c;
+  --gold:      #E8C98A;
+  --gold-dim:  #c4a870;
+  --text:      #C4BCB1;
+  --muted:     #7A6A58;
+  --muted2:    #9a8870;
+}
+
+[data-theme="light"] {
+  --bg:        #F5F2EE;
+  --bg2:       #EDEAE4;
+  --bg3:       #E3DFD8;
+  --border:    #D1CBBD;
+  --border2:   #C2BAA9;
+  --copper:    #9A6320;
+  --copper-lt: #B5742A;
+  --copper-dk: #7a4e1c;
+  --gold:      #9A6320;
+  --gold-dim:  #B08840;
+  --text:      #2E2318;
+  --muted:     #7A6248;
+  --muted2:    #9A8C78;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Lora', serif;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.7;
+}
+```
+
+### Visuelle Effekte (Web)
+
+```css
+/* Grain-Overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,...feTurbulence...");
+}
+
+[data-theme="light"] body::before { opacity: 0.015; }
+
+/* Glow-Orb */
+body::after {
+  content: '';
+  position: fixed;
+  width: 800px; height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(181,116,42,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  animation: orbDrift 20s infinite alternate ease-in-out;
+}
+
+[data-theme="light"] body::after {
+  background: radial-gradient(circle, rgba(181,116,42,0.04) 0%, transparent 70%);
 }
 ```
 
@@ -77,21 +158,13 @@ body {
 
 ## Das Plus-Symbol
 
-Das `+` ist das zentrale Markenelement von BERENT.AI.
-
-**Verwendung:**
-- Als Bullet-Punkt-Ersatz in Listen
-- Als Trennelement zwischen Sektionen
-- Als visueller Anker in Headlines (`Beratung + Entwicklung`)
-- Als dekoratives Element in Navigation und Footer
+Das `+` ist das zentrale Markenelement. Immer in Gold `#E8C98A` (Dark Mode) – niemals in Kupfer.
 
 **CSS-Implementierung:**
 ```css
 .plus-mark {
-  width: 18px;
-  height: 18px;
-  position: relative;
-  flex-shrink: 0;
+  width: 18px; height: 18px;
+  position: relative; flex-shrink: 0;
 }
 .plus-mark::before,
 .plus-mark::after {
@@ -100,54 +173,29 @@ Das `+` ist das zentrale Markenelement von BERENT.AI.
   background: var(--gold);
   border-radius: 1px;
 }
-.plus-mark::before {
-  width: 2px; height: 100%;
-  left: 50%; top: 0;
-  transform: translateX(-50%);
-}
-.plus-mark::after {
-  width: 100%; height: 2px;
-  top: 50%; left: 0;
-  transform: translateY(-50%);
-}
+.plus-mark::before { width: 2px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
+.plus-mark::after  { width: 100%; height: 2px; top: 50%; left: 0; transform: translateY(-50%); }
 ```
-
-**Regel:** Das Plus ist immer in `#E8C98A` (Gold) – niemals in Kupfer.
 
 ---
 
 ## Responsive / Mobile (Pflicht)
 
-**Regel:** Alle BERENT-Seiten müssen auf Smartphones (ab 320px Breite, iPhone 16: 393px) korrekt dargestellt werden.
-
-**Viewport (immer im `<head>`):**
+**Viewport:**
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ```
 
-**Layout-Regeln:**
-- **Mobile-First:** Basis-Styles für kleine Screens, dann `min-width` Media Queries für größere
-- **Kein horizontales Scrollen** – `overflow-x: hidden` auf `body` oder `html` nur als letzte Option; besser: `max-width: 100%` auf Containern, `box-sizing: border-box` überall
-- **Flexbox/Grid:** `flex-wrap: wrap` oder `grid-template-columns: repeat(auto-fit, minmax(...))` – Elemente stapeln sich auf schmalen Screens
-- **Bilder:** `max-width: 100%`, `height: auto`
-- **Touch-Targets:** Mindestens 44×44px für klickbare Elemente
-
-**Breakpoints (Orientierung):**
-- Mobile: &lt; 640px
+**Breakpoints:**
+- Smartphone: < 640px
 - Tablet: 640px–1024px
-- Desktop: &gt; 1024px
+- Desktop: > 1024px
 
-**Test:** Immer auf iPhone 16 (393×852) oder vergleichbarem Gerät prüfen – keine seitlich nebeneinander stehenden Elemente, die über den Rand ragen.
-
----
-
-## Design-Prinzipien
-
-1. **Wärme statt Kälte** – Warme Braun-Schwarz-Töne, keine kalten Grautöne
-2. **Editorial** – Großzügiger Weißraum, klare Typografie-Hierarchie
-3. **Kupfer als Leitfarbe** – Akzente, Hover-States, Borders, Nummern
-4. **Kein Generic-AI-Look** – Keine lila Gradienten, keine Inter-Font, keine weißen Hintergründe
-5. **Plus als Markenelement** – Überall wo Bullets, Separatoren oder Highlights erscheinen
+**Regeln:**
+- Mobile-First, kein horizontales Scrollen
+- Flexbox/Grid mit `flex-wrap: wrap`
+- Touch-Targets: mindestens 44×44px
+- Bilder: `max-width: 100%`, `height: auto`
 
 ---
 
@@ -160,8 +208,9 @@ Das `+` ist das zentrale Markenelement von BERENT.AI.
 </a>
 ```
 
-**Regel:** `BERENT.AI` immer in Großbuchstaben.  
-**Regel:** Der Header-Brand ist immer ein Link zurück zu `https://berent.ai`.
+**Regeln:**
+- `BERENT.AI` immer in Großbuchstaben
+- Header-Brand ist immer ein Link auf `https://berent.ai`
 
 ---
 
@@ -181,21 +230,34 @@ Das `+` ist das zentrale Markenelement von BERENT.AI.
 </footer>
 ```
 
-**Pflichtlinks im Footer:** Impressum (`https://berent.ai/impressum.html`) + Zurück zur Hauptseite (`https://berent.ai`).
+**Pflichtlinks:** Impressum + Zurück zur Hauptseite
+
+---
+
+## Design-Prinzipien
+
+1. **Neutral-dunkel mit warmen Akzenten** – Hintergrund kühl-neutral, Kupfer bringt Wärme
+2. **Editorial** – Großzügiger Weißraum, klare Typografie-Hierarchie
+3. **Kupfer als Leitfarbe** – Akzente, Hover-States, Borders, Nummern
+4. **Kein Generic-AI-Look** – Keine lila Gradienten, kein Inter-Font, kein reines Weiß
+5. **Plus als Markenelement** – Überall wo Bullets, Separatoren oder Highlights
+6. **Mediumgerecht** – Web: Dark (Standard) und Light Mode / DOCX: hell
+7. **Subtile Textur** – Grain-Overlay und Glow-Orb verleihen Tiefe
+8. **Monospace für Labels** – JetBrains Mono bei Metainfos, Buttons, Status-Anzeigen
+9. **Dual-Theme** – Dark Mode Standard, Light Mode mit warmen Sand-/Kupfertönen
+10. **Kein Ampersand** – Im Fließtext und UI immer „und" statt „&"
 
 ---
 
 ## Anwendungsregeln
 
-Bei allen BERENT.AI-Inhalten oder -Code gilt:
-
-- Hintergrund ist **immer** `#090806` – niemals `#000` oder `#fff`
-- Fließtext ist **immer** `#C4BCB1` – niemals Weiß
-- Headlines: **Bebas Neue**, Body: **Lora ohne Kursiv**, Code: **JetBrains Mono**
-- Akzentfarbe: **Kupfer `#B5742A`** für Buttons, Borders, Nummern, Highlights
-- Das **`+` Symbol** ist immer in Gold `#E8C98A`
-- Footer enthält **immer** Impressum-Link und Zurück-zur-Hauptseite-Link
-- Nav-Brand ist **immer** ein klickbarer Link auf `https://berent.ai`
-- Kein `font-style: italic` bei Lora
-- Kein reines Schwarz, kein Weiß, kein generic AI-Look
-- **Responsive Pflicht:** Mobile-First, Viewport-Meta, kein horizontales Scrollen, Test auf iPhone-Breite
+**Web / HTML / CSS:**
+- Dark Mode (Standard): `#0e0e10` (--bg), `#151518` (--bg2), `#1c1c20` (--bg3), Text `#C4BCB1`
+- Light Mode: `#F5F2EE` (--bg), `#EDEAE4` (--bg2), `#E3DFD8` (--bg3), Text `#2E2318`
+- Theme-Toggle: `<html data-theme="light">`, Dark = kein Attribut (Standard)
+- Headlines: Bebas Neue (uppercase) · Body: Lora · Labels/Buttons: JetBrains Mono (uppercase)
+- Akzent: Kupfer `#B5742A` · Plus-Symbol: Gold `#E8C98A`
+- Visuelle Effekte: Grain-Overlay + Glow-Orb
+- Footer: immer mit Impressum-Link und Zurück-zur-Hauptseite-Link
+- Responsive Pflicht: Mobile-First, kein horizontales Scrollen
+- Kein `&` als Konjunktion — immer „und"
