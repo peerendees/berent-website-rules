@@ -10,17 +10,30 @@ alwaysApply: false
 
 `qualifikationen.html` — Unterseite `/qualifikationen` auf berent.ai.
 
+## Verzeichnisstruktur
+
+```
+certificates/              ← Originaldateien (PDFs, PNGs) — NICHT im Git
+images/certs/*.webp        ← Fertige Zertifikate für die Website (im Git)
+images/badges/*.webp       ← Fertige Badges für die Website (im Git)
+```
+
+- **Ausgangsdateien** liegen in `certificates/` (lokal, gitignored). Dort befinden sich die Original-PDFs/-PNGs vom Aussteller sowie CSV-Exports.
+- **Fertige WebPs** werden aus den Originalen konvertiert und in `images/certs/` bzw. `images/badges/` abgelegt.
+
 ## Bildvorbereitung
 
 ### Zertifikate
 - **Format:** WebP
 - **Seitenverhältnis:** 3:4 (Hochformat)
+- **Quelle:** `certificates/<dateiname>.pdf` oder `.png`
 - **Ablage:** `images/certs/<name>.webp`
 - **Namenskonvention:** Kleinbuchstaben, Bindestriche, z.B. `ki-berater-tuev-austria.webp`
 
 ### Badges
 - **Format:** WebP
 - **Seitenverhältnis:** 1:1 (quadratisch)
+- **Quelle:** `certificates/<YYYYMMDD>-<Name>-<4stellig>.png`
 - **Ablage:** `images/badges/<YYYYMMDD>-<Name>-<4stellig>.webp`
 - **Namenskonvention:** Datum zuerst, dann Kurzname, dann die letzten 4 Zeichen der Credential-ID, z.B. `20260321-Marketing-ab12.webp`
 
