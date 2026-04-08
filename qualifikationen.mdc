@@ -1,0 +1,85 @@
+---
+description: Zertifikate und Badges auf der Qualifikationen-Seite einfügen
+globs: "qualifikationen.html"
+alwaysApply: false
+---
+
+# Qualifikationen-Seite: Zertifikate und Badges
+
+## Datei
+
+`qualifikationen.html` — Unterseite `/qualifikationen` auf berent.ai.
+
+## Bildvorbereitung
+
+### Zertifikate
+- **Format:** WebP
+- **Seitenverhältnis:** 3:4 (Hochformat)
+- **Ablage:** `images/certs/<name>.webp`
+- **Namenskonvention:** Kleinbuchstaben, Bindestriche, z.B. `ki-berater-tuev-austria.webp`
+
+### Badges
+- **Format:** WebP
+- **Seitenverhältnis:** 1:1 (quadratisch)
+- **Ablage:** `images/badges/<YYYYMMDD>-<Name>-<4stellig>.webp`
+- **Namenskonvention:** Datum zuerst, dann Kurzname, dann die letzten 4 Zeichen der Credential-ID, z.B. `20260321-Marketing-ab12.webp`
+
+### Konvertierung
+Falls kein WebP vorliegt:
+```bash
+cwebp -q 85 eingabe.png -o ausgabe.webp
+```
+Oder über Squoosh (squoosh.app).
+
+## Zertifikat einfügen (HTML ersetzen)
+
+Platzhalter in `qualifikationen.html` sind `<div class="card ...">` Blöcke mit dem Text "TÜV-Zertifikat ausstehend". Diese durch einen klickbaren `<a>` Block ersetzen:
+
+```html
+<a href="<Verifizierungs-URL>" target="_blank" rel="noopener noreferrer"
+   class="card flex flex-col items-center text-center transition-transform hover:scale-[1.02]">
+    <img src="images/certs/<dateiname>.webp" alt="<Titel> — <Aussteller>"
+         class="w-full rounded-lg mb-4" loading="lazy">
+    <p class="font-semibold text-sm" style="color: var(--copper);"><Titel></p>
+    <p class="text-xs mt-1" style="color: var(--text-muted);"><Aussteller>, <Datum></p>
+</a>
+```
+
+**Wichtig:** Den gesamten `<div>` Platzhalter ersetzen, nicht nur den Inhalt.
+
+## Badge einfügen (JS-Array updaten)
+
+Badges werden **nicht** als HTML eingefügt, sondern über ein JavaScript-Array in `qualifikationen.html` gerendert.
+
+### Mastery-Badge
+Im Array `masteryBadges` den Eintrag finden (nach `name` suchen) und `img` + `link` setzen:
+
+```javascript
+{ name: "KI im Marketing", date: "21.03.2026",
+  img: "images/badges/20260321-Marketing-ab12.webp",
+  link: "https://koerting-institute.com/zertifikat/?credential=<ID>" },
+```
+
+### Event-Badge
+Im Array `eventBadges` einen neuen Eintrag **oben** einfügen:
+
+```javascript
+{ name: "<Event-Name>", date: "<TT.MM.JJJJ>",
+  img: "images/badges/<YYYYMMDD>-<Name>-<4stellig>.webp",
+  link: "<Verifizierungs-URL>" },
+```
+
+### Neuen Badge-Typ hinzufügen
+Falls ein neuer Badge-Typ nötig ist (weder Mastery noch Event):
+1. Neues Array anlegen (z.B. `const partnerBadges = [...]`)
+2. Neuen `<h3>` und `<div id="...">` Container im HTML anlegen
+3. `renderBadges(partnerBadges, '<container-id>')` aufrufen
+
+## Checkliste nach dem Einfügen
+
+1. Bild liegt in `images/certs/` oder `images/badges/`
+2. WebP-Format, korrekte Maße (3:4 oder 1:1)
+3. Verifizierungs-URL ist korrekt (bei Körting-Zertifikaten: `koerting-institute.com/zertifikat/?credential=<UUID>`)
+4. Bei Badges: Eintrag im JS-Array, nicht im HTML
+5. `npm run build` ausführen (oder Vercel baut automatisch)
+6. Commit-Message: `Add <Titel> certificate/badge to qualifications page`
